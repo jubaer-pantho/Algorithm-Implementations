@@ -2,12 +2,24 @@
 #include<stdio.h>
 #include<malloc.h>
 
-int arr[8][8];
+#define MAX 200
+#define INFINITY 5000
 
-int initialized[8];
+int initialized[MAX];
 
 int main()
 {	
+	int N;
+	
+	printf("Enter the number of nodes: ");
+	scanf("%d", &N);
+	int arr[N][N];
+	
+	for(int i=0;i< N;i++)
+		for(int j=0;j<N;j++)
+			arr[i][j] = 0;
+/*	
+ * sample data
 	arr[0][1] = 10;
 	arr[0][7] = 8;
 	arr[7][6] = 1;
@@ -18,22 +30,38 @@ int main()
 	arr[3][4] = 3;
 	arr[2][3] = 1;
 	arr[5][2] = -2;
+*/	
 	
-	int *dist;
+	int edges;
+	printf("Enter Number of edges: ");
+	scanf("%d", &edges);
+	printf("Enter origin destination and cost:\n");
 	
-	dist = (int *) malloc(8*sizeof(int));
-	dist[0]=0;
+	for(int i=0;i< edges;i++)
+	{
+		int origin, destination, value;
+		printf("edge %d : ",i);
+		scanf("%d%d%d", &origin, &destination, &value);
+		
+		arr[origin][destination] = value;
+	}	
+
+	int *dist;	
+	dist = (int *) malloc(N*sizeof(int));
+	
+	dist[0]=0;   // 0 index is the source 
 	initialized[0] = 1;
 
-	for(int i=1;i<8;i++)	dist[i] = 2000;
+	for(int i=1;i<N;i++)	
+		dist[i] = INFINITY;
 	
-	for(int i=1;i<8;i++)
+	for(int i=1;i<N;i++)
 	{
-		for(int j=0;j<8;j++)
+		for(int j=0;j<N;j++)
 		{
 			if(initialized[j])
 			{
-				for(int k=1;k<8;k++)
+				for(int k=1;k<N;k++)
 				{
 					if(arr[j][k])
 					{
@@ -48,7 +76,9 @@ int main()
 			}
 		}
 	}
-	for(int i=0;i<7;i++)
+	
+	printf("resulting distance:\n");
+	for(int i=0;i<(N-1);i++)
 	{
 		printf("distance %c =%d\n", i+'A' ,dist[i+1]);
 	}	
