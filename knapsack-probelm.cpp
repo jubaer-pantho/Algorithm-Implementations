@@ -1,19 +1,36 @@
 //knapsack algorithm
 //author: Md Jubaer Hossain Pantho
+// use comment values as sample input
+
 
 #include<stdio.h>
 #include<iostream>
 
 using namespace std;
 
-
 int main(int argc , char* argv[])
 {
-	int items = 4;
-	int bagWeights = 5;
+	int items;// = 4;
+	int bagWeights;// = 5;
+
+	printf("Enter no. of items: ");
+	scanf("%d", &items);
 	
-	int itemWeights[items] = {2,3,4,5};
-	int itemValue[items] = {3,7,2,9};
+	printf("Enter the backpack weight: ");
+	scanf("%d", &bagWeights);
+	
+	int itemWeights[items]; //= {2,3,4,5};
+	int itemValue[items]; //= {3,7,2,9};	
+
+
+	printf("Enter sorted item weights with item values:\n");
+		
+	for(int i=0;i<items; i++)
+	{
+		printf("item %d:\n",i);
+		scanf("%d%d", &itemWeights[i] , &itemValue[i]);
+	}
+	
 	
 	int mat[items+1][bagWeights+1];
 	
@@ -60,7 +77,6 @@ int main(int argc , char* argv[])
 	}
 
 printf("maximum profit %d\n", mat[items][bagWeights]);
-
 
 return 0;
 }
