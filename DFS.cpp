@@ -25,7 +25,7 @@ int spop()
 {
 	if(top==-1)
 	{
-		printf("stack is empty\n");		
+		//printf("stack is empty\n");		
 		return -6;
 	}
 	else
@@ -36,33 +36,23 @@ int spop()
 
 void create_graph()
 {
-
 	N=6; // let's say we have 6 points
 	maxVertices = N*(N-1);
 	
 	for(int i=0;i<10;i++) // let's say 10 vertices;
 	{
 		int origin, dest;
-		
 		scanf("%d%d", &origin,&dest);
-		
 		adjMat[origin][dest] = 1;
-	
-	
 	}
-
 }
-
-
-
-
 
 int main(int argc, char *argv[]) 
 {	
   int a[10]= {1,2,9,5,4,6,7,8,3,0};
   
- //create_graph();
- 
+//create_graph();
+//sample graph generation. Use the create_graph() function to input different graph.
  adjMat[1][2]= 1;
  adjMat[1][3]= 1; 
  adjMat[1][4]= 1; 
@@ -73,16 +63,12 @@ int main(int argc, char *argv[])
  adjMat[3][4]= 1; 
  adjMat[5][6]=1;
  
- 
  int initialPoint = 1;
- 
  spush(1);
- 
  int visitedValue= 1;
   
  while(1)
  {
-
 	 int current = spop();	 	 
 	 if(current == -6) break;
 	 
@@ -102,14 +88,10 @@ int main(int argc, char *argv[])
 	 }
  }
  
+ printf("Printing the order nodes were visited:\n");
  for(int i=1;i<=N;i++)
  {
-	 printf("visited [ %d ] = %d \n", i, visited[i]);
-	 
-	 }
-  
-  return 0;	
-	
+	 printf("visited [ %d ] = %d \n", i, visited[i]);	 
+ }
+  return 0;		
 }
-
-
