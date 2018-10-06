@@ -5,15 +5,12 @@
 
 #define MAX 100 
 using namespace std;
-
 int adjMat[MAX][MAX];
-
 int myQueue[200];
 int N=6;
 int maxVertices;
 int front = -1;
 int rear = -1;
-
 int visited[MAX];
 
 void qpush(int q)
@@ -33,11 +30,9 @@ int qpop()
 	}
 	else
 	{
-	front++;	
-	return myQueue[front];
-	
+		front++;	
+		return myQueue[front];
 	}
-	
 }
 
 
@@ -69,7 +64,6 @@ int main(int argc, char *argv[])
   int a[10]= {1,2,9,5,4,6,7,8,3,0};
   
  //create_graph();
- 
  //sample data
  adjMat[1][2]= 1;
  adjMat[1][3]= 1; 
@@ -82,9 +76,7 @@ int main(int argc, char *argv[])
  adjMat[5][6]=1;
  
  int initialPoint = 1;
- 
  qpush(1);
- 
  int visitedValue= 1;
   
  while(1)
@@ -97,7 +89,6 @@ int main(int argc, char *argv[])
 	 {
 		visited[current] = visitedValue;
 		visitedValue++;
-	 
 		for(int i=1;i<=N;i++)
 		{
 			if(adjMat[current][i] == 1 and visited[i] == 0)
@@ -109,13 +100,11 @@ int main(int argc, char *argv[])
 	 }
  }
  
+ printf("Printing the order nodes were visited:\n");
  for(int i=1;i<=N;i++)
  {
 	 printf("visited [ %d ] = %d \n", i, visited[i]);
-	 
-	 }
-  
+ }
   return 0;	
-	
 }
 
