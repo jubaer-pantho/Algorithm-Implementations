@@ -20,7 +20,7 @@ int find(int a)
 	while(temp1)
 	{
 		temp2 = parent[temp1];		
-		if (temp2 == parent[temp1])
+		if (temp2 == temp1)
 		{
 			break;
 		}		
@@ -65,77 +65,58 @@ int unionFunc(int a, int b)
 	}
 	
 	visited[a] = 1;
-	visited[b] = 1;
-	
+	visited[b] = 1;	
 	return 1;
 }
 
 void create_graph()
 {
-
 	N=7; // let's say we have 6 points
 	maxVertices = N*(N-1);
-	
 	for(int i=0;i<10;i++) // let's say 10 vertices;
 	{
-		
 		scanf("%d%d%d", &source[i],&destination[i], &edgeVal[i]);
-	
 	}
-
 }
-
-
-
-
 
 int main(int argc, char *argv[]) 
 {	
-
+// sample graph
+//use create graph function to generate a different graph
 source[1]= 1;
 destination[1] = 2;
 edgeVal[1] = 7;
-
 
 source[2]= 1;
 destination[2] = 3;
 edgeVal[2] = 5;
 
-
 source[3]= 1;
 destination[3] = 6; 
 edgeVal[3] = 14;
-
 
 source[4]= 3;
 destination[4] = 4;
 edgeVal[4] = 11;
 
-
 source[5]= 6;
 destination[5] = 5; 
 edgeVal[5] = 9;
-
 
 source[6]=4;
 destination[6] = 5; 
 edgeVal[6] = 6;
 
-
 source[7]= 2;
 destination[7] = 3; 
 edgeVal[7] = 10;
 
-/*
   for(int i=1;i<=7;i++)
  {
-	 printf("source, desitnation edgeVal %d   %d   %d\n", source[i], destination[i], edgeVal[i] );
-	 
+	 printf("source, desitnation edgeVal %d   %d   %d\n", source[i], destination[i], edgeVal[i] );	 
  }
 
 cout << "\n\n\n";
-
-*/
 
  for(int i=1;i<7;i++)
  {
@@ -154,30 +135,21 @@ cout << "\n\n\n";
 			 
 			 int temp3 = destination[j];
 			 destination[j] = destination[j+1];
-			 destination[j+1] = temp3;
-			 
-			 
+			 destination[j+1] = temp3; 
 		 }
-		 
-		 
 	 }
- }
+}
  
-/* 
   for(int i=1;i<=7;i++)
  {
-	 printf("source, desitnation edgeVal %d   %d   %d\n", source[i], destination[i], edgeVal[i] );
-	 //cout << "edgeval " << edgeVal[i] << "\n";
-	 
+	 printf("new source, desitnation edgeVal %d   %d   %d\n", source[i], destination[i], edgeVal[i] );
+	 //cout << "edgeval " << edgeVal[i] << "\n";	 
  }
- 
-*/ 
- 
- 
+ cout <<"\n\n";
+
  int count=0;
  for(int i=1;i<=7;i++)
  {
- 
 /* 	    if(i==3)
      	{
 				 printf("\nparent 1 : %d, parent2 : %d \n", parent[source[i]], parent[destination[i]]);
@@ -189,38 +161,20 @@ cout << "\n\n\n";
 		if(resultEdge)
 		{
 			result[i] = 1;
-			count++;
-			
+			count++;			
 		}
 	 
 	 if(count==5) break;
-/*	 
-	 if(i==3)
-     {
-		printf("parent 1 : %d, parent2 : %d \n\n", parent[source[i]], parent[destination[i]]);
-  	 }
-*/
- }
 
-
-/*
- for(int i=1;i<=7;i++)
- {
-	 cout << "parent " << parent[i] << "\n"; 
  }
- for(int i=1;i<=7;i++)
- {
-	 cout << "edgeval " << edgeVal[i] << "\n";
- }
- printf("\n\n\n");
-*/
-
 
  for(int i=1;i<=N;i++)
  {
-	 cout << result[i] << endl;
+	 if(result[i] ==1){
+		cout <<"no. " << i;
+		printf(" MST edge: source: %d  destination:  %d  value: %d\n", source[i], destination[i], edgeVal[i] );
+	 }
  }
  
-  return 0;	
-	
+  return 0;		
 }
