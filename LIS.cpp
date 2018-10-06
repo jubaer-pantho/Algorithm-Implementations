@@ -1,18 +1,20 @@
+//longest increasing subsequence
+
 #include<stdio.h>
 #include<iostream>
 
 using namespace std;
+#define LEN 6 
 
-int maxL[6];	
-int L[6];
+int maxL[LEN];	
+int L[LEN];
 
 int main(int argc, char *argv[])
 {
-	
+	//sample string
 	int a[] = {3,2,5,4,6,1};
-	
 	int size = sizeof(a)/sizeof(int);
-
+	printf("string length : %d  \n", size);
 	L[0]= maxL[0] = 1;
 	
 	for(int i=1; i< size;i++)
@@ -24,22 +26,21 @@ int main(int argc, char *argv[])
 				L[i] = L[j]+1;
 				maxL[i] = maxL[i-1]>L[i]? maxL[i-1]:L[i];
 				break;
-			}
-			
+			}			
 			if(j==0)
 			{
 				maxL[i] = maxL[i-1];
 				L[i] = 1; 
 			}
 		}
-		
-		
 	}
 	
-//	cout << maxL[5];
-	
-	for(int i=0;i<6;i++)
-	cout << maxL[i]<< " ";
+	cout <<"LIC : "<< maxL[size-1] << endl;
+	cout << "max L array: ";	
+	for(int i=0;i<size;i++)
+		cout << maxL[i]<< " ";
+
+cout << endl;
 
 return 0;	
 }
