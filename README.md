@@ -12,3 +12,4 @@ Algorithm List:
 7. Dijkstras
 8. Knapsack
 10. Hashtable
+11. Merge Sort
